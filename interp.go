@@ -9,7 +9,8 @@ import (
 
 func interp() {
 
-	ip = start
+	var ip uint32
+	var inst uint32
 	/*
 				fmt.Printf(" startup r1 %v r2 %v wa %v wb %v wc %v xl %v xr %v xs %v cp %v ia %v\n",
 					reg[r1], reg[r2], reg[wa], reg[wb], reg[wc], reg[xl], reg[xr], reg[xs],
@@ -17,6 +18,8 @@ func interp() {
 		fmt.Printf("start interp mem len %v  ip %v r0 %v\n",len(mem),ip,reg[r0])
 		fmt.Printf("s_aaa %v s_yyy %v\n",s_aaa,s_yyy)
 	*/
+	var start uint32 = 0
+	ip := start
 run:
 	for {
 		if reg[r0] != 0 {
