@@ -80,8 +80,8 @@ func sysdt() int {
 }
 
 func sysea() int {
-//	fmt.Printf("sysea wa %v wb %v wc %v xr %v %v\n",
-//		reg[wa], reg[wb], reg[wc], reg[xr], reg[xl])
+	//	fmt.Printf("sysea wa %v wb %v wc %v xr %v %v\n",
+	//		reg[wa], reg[wb], reg[wc], reg[xr], reg[xl])
 	// no action for now
 	_ = printscb(xl, 0)
 	return 0
@@ -114,7 +114,7 @@ func setscblk(b int, str string) {
 
 func sysem() int {
 	if otrace {
-	fmt.Println("sysem ", reg[wa])
+		fmt.Println("sysem ", reg[wa])
 	}
 	if int(reg[wa]) > len(errorText) { // return null string if error number out of range
 		reg[xr] = int(scblk0)
@@ -298,12 +298,12 @@ func sysld() int {
 func sysmm() int {
 	old := int(memLast)
 	new := old
-	if new >= len(mem) - 1 {
+	if new >= len(mem)-1 {
 		// no memory available for expansion
 		reg[xr] = 0
 	} else {
 		new = old + 1000
-		if new >= len(mem) - 1 {
+		if new >= len(mem)-1 {
 			new = len(mem) - 1
 		}
 		reg[xr] = int(new - old)

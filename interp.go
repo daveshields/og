@@ -9,8 +9,7 @@ import (
 
 func interp() {
 
-	var ip uint32
-	var inst uint32
+	ip = start
 	/*
 				fmt.Printf(" startup r1 %v r2 %v wa %v wb %v wc %v xl %v xr %v xs %v cp %v ia %v\n",
 					reg[r1], reg[r2], reg[wa], reg[wb], reg[wc], reg[xl], reg[xr], reg[xs],
@@ -18,8 +17,8 @@ func interp() {
 		fmt.Printf("start interp mem len %v  ip %v r0 %v\n",len(mem),ip,reg[r0])
 		fmt.Printf("s_aaa %v s_yyy %v\n",s_aaa,s_yyy)
 	*/
-	var start uint32 = 0
-	ip := start
+
+	var int1, int2 int32
 run:
 	for {
 		if reg[r0] != 0 {
@@ -118,43 +117,43 @@ run:
 		case dca:
 			reg[dst]--
 		case beq:
-			if reg[dst] == reg[src] {
+			if uint(reg[dst]) == uint(reg[src]) {
 				ip = off
 			}
 		case bge:
-			if reg[dst] >= reg[src] {
+			if uint(reg[dst]) >= uint(reg[src]) {
 				ip = off
 			}
 		case bgt:
-			if reg[dst] > reg[src] {
+			if uint(reg[dst]) > uint(reg[src]) {
 				ip = off
 			}
 		case bne:
-			if reg[dst] != reg[src] {
+			if uint(reg[dst]) != uint(reg[src]) {
 				ip = off
 			}
 		case ble:
-			if reg[dst] <= reg[src] {
+			if uint(reg[dst]) <= uint(reg[src]) {
 				ip = off
 			}
 		case blt:
-			if reg[dst] < reg[src] {
+			if uint(reg[dst]) < uint(reg[src]) {
 				ip = off
 			}
 		case blo:
-			if reg[dst] < reg[src] {
+			if uint(reg[dst]) < uint(reg[src]) {
 				ip = off
 			}
 		case bhi:
-			if reg[dst] > reg[src] {
+			if uint(reg[dst]) > uint(reg[src]) {
 				ip = off
 			}
 		case bnz:
-			if reg[dst] != 0 {
+			if uint(reg[dst]) != 0 {
 				ip = off
 			}
 		case bze:
-			if reg[dst] == 0 {
+			if uint(reg[dst]) == 0 {
 				ip = off
 			}
 		case lct:
@@ -543,5 +542,5 @@ func listStmt() {
 		reg[xl], reg[xr], reg[xs], reg[cp], int32(reg[ia]))
 	fmt.Printf(" %v %v %v %v %v %v\n", ip,
 		op, opName[op], regName[dst], regName[src], off)
-	fmt.Printf("  %v\n", errorText[off])
+	//	fmt.Printf("  %v\n", stmt_text[off])
 }

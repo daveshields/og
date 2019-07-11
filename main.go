@@ -176,32 +176,30 @@ var opName = map[int]string{
 	zrb:     "zrb",
 }
 var (
-	ip       int
-	mem      [100000]uint32
-	reg      [16]uint32
-	stackEnd uint32
-	memLast  uint32 // index of last allocated memory word
-	long1, long2 int64
-	//	var int1,int2 int32
-	int1, int2 int32
-	prcstack [32]int
+	ip             int
+	mem            [100000]int
+	reg            [16]int
+	stackEnd       int
+	memLast        int // index of last allocated memory word
+	long1, long2   int64
+	prcstack       [32]int
 	inst, dst, src int
-	off uint32
-	overflow bool
-	op int
+	off            int
+	overflow       bool
+	op             int
 	//	var f1, f2 float32
 	d1 float64
-// itrace traces instructions, strace traces statements, otrace traces osint calls
-itrace, otrace, strace bool
-ifileName string
+	// itrace traces instructions, strace traces statements, otrace traces osint calls
+	itrace, otrace, strace bool
+	ifileName              string
 
-instCount = 0      // number of instructions executed
-stmtCount = 0      // number of statements executed (stmt opcode)
-instLimit = 100000000 // maximum number of instructions
-stmtLimit = 100000000   // maximum number of statements
-stmtTrace = false
-instTrace = false
-maxOffset = 0
+	instCount = 0         // number of instructions executed
+	stmtCount = 0         // number of statements executed (stmt opcode)
+	instLimit = 100000000 // maximum number of instructions
+	stmtLimit = 100000000 // maximum number of statements
+	stmtTrace = false
+	instTrace = false
+	maxOffset = 0
 )
 
 func main() {
@@ -221,7 +219,7 @@ func main() {
 	_ = startup()
 
 	fmt.Println()
-	fmt.Println("Minimal instructions executed",stmtCount)
-	fmt.Println("Machine instructions executed",instCount)
-    fmt.Println("Maximum offset",maxOffset)
+	fmt.Println("Minimal instructions executed", stmtCount)
+	fmt.Println("Machine instructions executed", instCount)
+	fmt.Println("Maximum offset", maxOffset)
 }
